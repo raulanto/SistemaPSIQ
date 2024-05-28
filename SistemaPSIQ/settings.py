@@ -29,11 +29,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "catalago.apps.CatalagoConfig"
 ]
 
 
+THIRD_PARTY_APPS = [
 
+
+]
+
+LOCAL_APPS = [
+    "catalago.apps.CatalagoConfig",
+    "registro.apps.RegistroConfig"
+]
+
+
+INSTALLED_APPS += THIRD_PARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

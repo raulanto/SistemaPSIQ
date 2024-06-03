@@ -1,0 +1,135 @@
+{% extends 'body.html' %}
+
+{% block content %}
+    <style>
+        /* Card */
+        .card {
+            margin-bottom: 30px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+        }
+
+        .card-title {
+            padding: 20px 0 15px 0;
+            font-size: 18px;
+            font-weight: 500;
+            color: #012970;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .card-title span {
+            color: #899bbd;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .card-body {
+            padding: 0 20px 20px 20px;
+        }
+
+    </style>
+
+    <section class="section dashboard">
+        <div class="row">
+            <!-- Left side columns -->
+            <div class="col-lg-10">
+                <div class="row">
+                    <!-- Sales Card 
+                    <div class="col-lg-4 col-6">
+                        <div class="small-box bg-info">
+                            <div style="text-align: center;">
+                                <h5>Última Venta</h5>
+                            </div>
+                            <div class="inner">
+                                <h6>Cliente: {{ latest_sale.cli }}</h6>
+                                <h6>Total: ${{ latest_sale.total }}</h6>
+                                <h6>Fecha: {{ latest_sale.date_crea }}</h6>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-bag"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">Hoy <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>--><!-- End Sales Card -->
+
+                    <div class="col-md-4 col-sm-6 col-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-info"><i class="far fa-envelope"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Cliente: {{ latest_sale.cli }}</span>
+                                <span class="info-box-number">Total: ${{ latest_sale.total }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6 col-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-success"><i class="far fa-flag"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Nombre: {{ latest_product.name }}</span>
+                                <span class="info-box-number">Precio: ${{ latest_product.pvp }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-warning"><i class="far fa-copy"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Categoria</span>
+                                <span class="info-box-number">Nombre: {{ latest_category.name }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Sales -->
+                    <div class="card card-secondary col-12">
+                        <div class="card recent-sales overflow-auto">
+                            <div class="card-body">
+                                <h5 class="card-title">Ventas Recientes <span>| Hoy</span></h5>
+                                <div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
+                                    <div class="datatable-container">
+                                        <table class="table table-borderless datatable datatable-table">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">Numero</th>
+                                                <th scope="col">Cliente</th>
+                                                <th scope="col">Fecha de registro</th>
+                                                <th scope="col">Subtotal</th>
+                                                <th scope="col">Iva</th>
+                                                <th scope="col">Total</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for sale in sales %}
+                                                <tr data-index="{{ forloop.counter0 }}">
+                                                    <td scope="row"><a href="#" class="text-secondary">{{ sale.id }}</a>
+                                                    </td>
+                                                    <td>{{ sale.cli }}</td>
+                                                    <td><a href="#" class="text-secondary">{{ sale.date_crea }}</a></td>
+                                                    <td>${{ sale.subtotal }}</td>
+                                                    <td>${{ sale.iva }}</td>
+                                                    <td>${{ sale.total }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="datatable-bottom">
+                                        <div class="datatable-info">Showing 1 to {{ sales|length }}
+                                            of {{ sales|length }} entries
+                                        </div>
+                                        <nav class="datatable-pagination">
+                                            <ul class="datatable-pagination-list"></ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End Recent Sales -->
+                </div>
+            </div><!-- End Left side columns -->
+        </div>
+    </section>
+
+{% endblock %}

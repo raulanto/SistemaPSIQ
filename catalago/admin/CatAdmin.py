@@ -1,5 +1,12 @@
 from django.contrib import admin
 from ..models import *
+from ..models.cat_asentamientos import cat_asentamientos
+from ..models.cat_escolaridades import cat_escolaridades
+from ..models.cat_estados import cat_estados
+from ..models.cat_municipios import cat_municipios
+from ..models.cat_pais import cat_pais
+from ..models.cat_religiones import cat_religiones
+from ..models.cat_tipo_asentamientos import cat_tipo_asentamientos
 
 
 @admin.register(cat_asentamientos)
